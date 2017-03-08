@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
+	<competition id_competition="1" date_debut="2017-05-12" date_fin="2017-06-15"/>
 	
+	
+
+	<poule id_poule="1" id_competition="1" code="A" />
+	<poule id_poule="2" id_competition="1" code="B" />
+	<poule id_poule="3" id_competition="1" code="C" />
+	<poule id_poule="4" id_competition="1" code="D" />
+
+	<phase_finale id_phase_finale="1" id_competition="1" type="demifinal" />
+
+	<equipe id_equipe="1" pays="France" id_poule="1" />
+	<equipe id_equipe="2" pays="Portugal" id_poule="1" />
+	<equipe id_equipe="3" pays="Allemagne" id_poule="1" />
+	<equipe id_equipe="4" pays="Belgique" id_poule="1" />
+	<equipe id_equipe="5" pays="Suisse" id_poule="2" />
+	<equipe id_equipe="6" pays="Anglutaire" id_poule="2" />
+
+	
+
+	<rencontre id_rencontre="1" id_poule="1" date="2017-05-12"/>
+	<rencontre id_rencontre="2" id_poule="1" date="2017-05-12"/>
+	<rencontre id_rencontre="3" id_poule="1" date="2017-05-15"/>
+	<rencontre id_rencontre="4" id_poule="1" date="2017-05-15"/>
+	<rencontre id_rencontre="5" date="2017-05-18"/>
+	<rencontre id_rencontre="6" date="2017-05-18"/>
+
+	<jouer id_equipe="1" id_rencontre="1"/>
+	<jouer id_equipe="2" id_rencontre="1"/>
+	<jouer id_equipe="3" id_rencontre="2"/>
+	<jouer id_equipe="4" id_rencontre="2"/>
+	<jouer id_equipe="1" id_rencontre="3"/>
+	<jouer id_equipe="3" id_rencontre="3"/>
+	<jouer id_equipe="4" id_rencontre="4"/>
+	<jouer id_equipe="2" id_rencontre="4"/>
+	<jouer id_equipe="2" id_rencontre="5"/>
+	<jouer id_equipe="3" id_rencontre="5"/>
+	<jouer id_equipe="4" id_rencontre="6"/>
+	<jouer id_equipe="1" id_rencontre="6"/>
+
+	<role id_role="1" type="admin"/>
+	<role id_role="2" type="user"/>
+
 	<user id_user="1" username="layla" password="123456789" points="0"/>
 	<user id_user="2" username="halima" password="123456789" points="0"/>
 	<user id_user="3" username="mohamed" password="123456789" points="0"/>
+
+	<posseder id_user="1" id_role="1"/>
+	<posseder id_user="2" id_role="2"/>
+	<posseder id_user="3" id_role="2"/>
 
 </dataset>
 

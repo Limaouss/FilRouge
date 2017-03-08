@@ -4,8 +4,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import fr.norsys.technomaker.model.Equipe;
+import fr.norsys.technomaker.model.Poule;
 
 public interface EquipeDao {
 
-	public List<Equipe> returnTwoTeams() throws SQLException;
+	public List<Equipe> findEquipesParPoule(Poule poule) throws SQLException;
 }

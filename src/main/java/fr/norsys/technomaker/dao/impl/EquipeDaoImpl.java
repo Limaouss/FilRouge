@@ -1,45 +1,44 @@
 package fr.norsys.technomaker.dao.impl;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import fr.norsys.technomaker.dao.EquipeDao;
 import fr.norsys.technomaker.model.Equipe;
+import fr.norsys.technomaker.model.Poule;
 
 public class EquipeDaoImpl implements EquipeDao {
 
 	Connection connection;
-	Statement stmt;
 
 	public EquipeDaoImpl(Connection conection) throws SQLException {
 		this.connection = conection;
-		this.stmt = conection.createStatement();
 	}
 
 	@Override
-	public List<Equipe> returnTwoTeams() throws SQLException {
+	public List<Equipe> findEquipesParPoule(Poule poule) throws SQLException {
 		List<Equipe> equipes = new ArrayList<>();
-		String sql, sql2;
-		sql = "SELECT * from EQUIPE where PAYS='France'";
-		sql2 = "SELECT * from EQUIPE where PAYS='Portugal'";
-		ResultSet rsFrance = this.stmt.executeQuery(sql);
-		while (rsFrance.next())
-
-		{
-			Equipe france = new Equipe(rsFrance.getInt("ID_EQUIPE"), rsFrance.getString("PAYS"));
-			equipes.add(france);
+		String sql;
+		sql = "SELECT ID_EQUIPE,PAYS,ID_POULE from EQUIPE where ID_POULE = ?";
+		PreparedStatement statement = this.connection.prepareStatement(sql);
+		statement.setInt(1, poule.getIdPoule());
+		ResultSet equipesRs = statement.executeQuery();
+		while (equipesRs.next()) {
+			Arrays.asList(equipesRs).forEach(equipe -> {
+				try {
+					equipes.add(new Equipe(equipe.getInt("ID_EQUIPE"), equipe.getString("PAYS")));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 		}
-		ResultSet rsPortugal = this.stmt.executeQuery(sql2);
-		while (rsPortugal.next())
 
-		{
-			Equipe portugal = new Equipe(rsPortugal.getInt("ID_EQUIPE"), rsPortugal.getString("PAYS"));
-			equipes.add(portugal);
-		}
 		return equipes;
 	}
 }

@@ -47,7 +47,6 @@ public class DataSetUnit {
 	}
 
 	public Connection getConnection() {
-		System.out.println("++++" + this.connection);
 		return this.connection;
 	}
 

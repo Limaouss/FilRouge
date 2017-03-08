@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  3/7/2017 3:47:27 PM                      */
+/* Date de crï¿½ation :  3/7/2017 3:47:27 PM                      */
 /*==============================================================*/
 
 
@@ -42,6 +42,7 @@ create table EQUIPE
 (
    ID_EQUIPE            int not null AUTO_INCREMENT,
    PAYS                 varchar(15),
+   ID_POULE		int,
    primary key (ID_EQUIPE)
 );
 
@@ -105,7 +106,7 @@ create table PRONOSTIQUER
 create table RENCONTRE
 (
    ID_RENCONTRE         int not null AUTO_INCREMENT,
-   ID_PHASE_FINALE       int,
+   ID_PHASE_FINALE      int,
    ID_POULE             int,
    DATE                 date,
    SCOREEQUIPEA         int,
@@ -163,5 +164,8 @@ alter table RENCONTRE add constraint FK_APPARTENIR_PHASE foreign key (ID_PHASE_F
       references PHASE_FINALE (ID_PHASE_FINALE) on delete restrict on update restrict;
 
 alter table RENCONTRE add constraint FK_APPARTENIR_POULE foreign key (ID_POULE)
+      references POULE (ID_POULE) on delete restrict on update restrict;
+
+alter table EQUIPE add constraint FK_EQUIPE_POULE foreign key (ID_POULE)
       references POULE (ID_POULE) on delete restrict on update restrict;
 

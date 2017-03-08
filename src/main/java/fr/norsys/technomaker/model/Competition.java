@@ -9,8 +9,15 @@ import lombok.Setter;
 @Setter
 public class Competition {
 
-	private int idCompetion;
-	private Date dateDebut;
-	private Date dateFin;
+	private final int idCompetion;
+	private final Date dateDebut;
+	private final Date dateFin;
+
+	public Competition(int idCompetion, Date dateDebut, Date dateFin) {
+		super();
+		this.idCompetion = idCompetion;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+	}
 
 }
