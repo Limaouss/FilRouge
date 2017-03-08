@@ -9,10 +9,12 @@ import org.junit.Test;
 
 import dbunit.DataSetUnit;
 import fr.norsys.technomaker.dao.impl.UserDaoImpl;
+import fr.norsys.technomaker.model.User;
 
 public class UserDaoTest {
 
 	UserDao userDao;
+	User Mohamed;
 
 	@Before
 	public void setup() throws Exception {
@@ -21,8 +23,9 @@ public class UserDaoTest {
 	}
 
 	@Test
-	public void shouldReturnListFrancePortugal() throws SQLException {
-		System.out.println(this.userDao.returnUser());
-		assertThat(this.userDao.returnUser().getUsername()).isEqualTo("mohamed");
+	public void shouldReturnMohamedWhenArgIsMohamed() throws SQLException {
+		User Mohamed = new User(3, "mohamed", "123456789", 0);
+		assertThat(this.userDao.findUserByUsername("mohamed")).isEqualTo(Mohamed);
 	}
+
 }

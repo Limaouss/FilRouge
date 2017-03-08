@@ -1,6 +1,7 @@
 package fr.norsys.technomaker.dao.impl;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -16,14 +17,15 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User returnUser() throws SQLException {
+	public User findUserByUsername(String username) throws SQLException {
 		User user = new User();
-		String sql = "SELECT ID_USER, USERNAME,PASSWORD,POINTS";
-		ResultSet rsUser = this.stmt.executeQuery(sql);
-		System.out.println("ffffff" + rsUser.next());
+		String sql = "SELECT ID_USER, USERNAME,PASSWORD,POINTS from USER where USERNAME = ?";
+		PreparedStatement statement = this.connection.prepareStatement(sql);
+		statement.setString(1, username);
+		ResultSet rsUser = statement.executeQuery();
 		while (rsUser.next()) {
-			user = new User(rsUser.getInt("ID_USER"), rsUser.getString("USERNAME"), rsUser.getInt("POINTS"));
-			System.out.println("-----" + user);
+			user = new User(rsUser.getInt("ID_USER"), rsUser.getString("USERNAME"), rsUser.getString("PASSWORD"),
+					rsUser.getInt("POINTS"));
 		}
 		return user;
 	}

@@ -15,9 +15,10 @@ public class User {
 
 	}
 
-	public User(int id, String username, int points) {
+	public User(int id, String username, String password, int points) {
 		this.idUser = id;
 		this.username = username;
+		this.password = password;
 		this.points = points;
 	}
 

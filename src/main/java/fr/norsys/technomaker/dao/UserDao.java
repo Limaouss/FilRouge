@@ -6,5 +6,5 @@ import fr.norsys.technomaker.model.User;
 
 public interface UserDao {
 
-	public User returnUser() throws SQLException;
+	public User findUserByUsername(String username) throws SQLException;
 }
