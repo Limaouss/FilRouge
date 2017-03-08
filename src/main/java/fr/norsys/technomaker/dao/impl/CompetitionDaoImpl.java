@@ -25,7 +25,7 @@ public class CompetitionDaoImpl implements CompetitionDao {
 		statement.setInt(1, id);
 		ResultSet competitionRs = statement.executeQuery();
 		while (competitionRs.next()) {
-			competition = new Competition(competitionRs.getInt("ID_USER"), competitionRs.getDate("USERNAME"),
+			competition = new Competition(competitionRs.getInt("ID_COMPETITION"), competitionRs.getDate("DATE_DEBUT"),
 					competitionRs.getDate("DATE_FIN"));
 		}
 		return competition;

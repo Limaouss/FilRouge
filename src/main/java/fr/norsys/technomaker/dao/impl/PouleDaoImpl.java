@@ -22,6 +22,7 @@ public class PouleDaoImpl implements PouleDao {
 		this.competitionDao = new CompetitionDaoImpl(conection);
 	}
 
+	@Override
 	public List<Poule> findAllPoules() throws SQLException {
 		List<Poule> poules = new ArrayList<>();
 		String sql;
@@ -31,9 +32,9 @@ public class PouleDaoImpl implements PouleDao {
 		while (poulesRs.next()) {
 			Arrays.asList(poulesRs).forEach(poule -> {
 				try {
-					poules.add(new Poule(poulesRs.getInt("ID_EQUIPE"),
+					poules.add(new Poule(poulesRs.getInt("ID_POULE"),
 							this.competitionDao.findCompetitionById(poulesRs.getInt("ID_COMPETITION")),
-							poulesRs.getString("ID_EQUIPE").charAt(0)));
+							poulesRs.getString("CODE").charAt(0)));
 				} catch (Exception e) {
 					// TODO Auto-generated catch blocks
 					e.printStackTrace();
