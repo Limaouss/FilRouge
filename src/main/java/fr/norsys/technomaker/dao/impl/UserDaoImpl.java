@@ -13,7 +13,6 @@ public class UserDaoImpl implements UserDao {
 
 	public UserDaoImpl(Connection conection) throws SQLException {
 		this.connection = conection;
-		System.out.println("*****" + this.connection);
 	}
 
 	@Override

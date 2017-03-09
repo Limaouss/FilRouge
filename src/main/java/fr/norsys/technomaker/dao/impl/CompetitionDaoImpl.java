@@ -14,7 +14,6 @@ public class CompetitionDaoImpl implements CompetitionDao {
 
 	public CompetitionDaoImpl(Connection conection) throws SQLException {
 		this.connection = conection;
-		System.out.println("*****" + this.connection);
 	}
 
 	@Override

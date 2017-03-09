@@ -11,4 +11,17 @@ public class Pronostique {
 	private Rencontre rencontre;
 	private int scoreEquipeA;
 	private int scoreEquipeB;
+
+	public Pronostique(User user, Rencontre rencontre, int scoreEquipeA, int scoreEquipeB) {
+		super();
+		this.user = user;
+		this.rencontre = rencontre;
+		this.scoreEquipeA = scoreEquipeA;
+		this.scoreEquipeB = scoreEquipeB;
+	}
+
+	public Pronostique() {
+		super();
+	}
+
 }

@@ -40,6 +40,10 @@ public class Poule {
 		this.code = code;
 	}
 
+	public Poule() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

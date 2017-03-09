@@ -1,6 +1,7 @@
 package fr.norsys.technomaker.dao.impl;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -44,4 +45,19 @@ public class PouleDaoImpl implements PouleDao {
 
 		return poules;
 	}
+
+	public Poule findPouleById(int idPoule) throws SQLException {
+		Poule poule = new Poule();
+		String sql = "SELECT ID_POULE, ID_COMPETITION,CODE from POULE where ID_POULE = ?";
+		PreparedStatement statement = this.connection.prepareStatement(sql);
+		statement.setInt(1, idPoule);
+		ResultSet pouleRs = statement.executeQuery();
+		while (pouleRs.next()) {
+			poule = new Poule(pouleRs.getInt("ID_POULE"),
+					this.competitionDao.findCompetitionById(pouleRs.getInt("ID_COMPETITION")),
+					pouleRs.getString("CODE").charAt(0));
+		}
+		return poule;
+	}
+
 }
