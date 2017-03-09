@@ -8,5 +8,5 @@ import fr.norsys.technomaker.model.Poule;
 public interface PouleDao {
 	public List<Poule> findAllPoules() throws SQLException;
 
-	public Poule findPouleById(int idPoule) throws SQLException
+	public Poule findPouleById(int idPoule) throws SQLException;
 }

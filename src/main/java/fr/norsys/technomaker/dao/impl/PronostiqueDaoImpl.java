@@ -5,11 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import fr.norsys.technomaker.dao.CompetitionDao;
+import fr.norsys.technomaker.dao.PronostiqueDao;
 import fr.norsys.technomaker.model.Pronostique;
 import fr.norsys.technomaker.model.Rencontre;
 import fr.norsys.technomaker.model.User;
 
-public class PronostiqueDaoImpl {
+public class PronostiqueDaoImpl implements PronostiqueDao {
 
 	Connection connection;
 	CompetitionDao competitionDao;
@@ -18,6 +19,7 @@ public class PronostiqueDaoImpl {
 		this.connection = conection;
 	}
 
+	@Override
 	public Pronostique insertPronostique(User user, Rencontre rencontre, int ScoreEquipeA, int ScoreEquipeB)
 			throws SQLException {
 
@@ -31,7 +33,7 @@ public class PronostiqueDaoImpl {
 
 		int isValid = statement.executeUpdate();
 		if (isValid != 0) {
-			pronostique = new Pronostique(user,rencontre,ScoreEquipeA,ScoreEquipeB);
+			pronostique = new Pronostique(user, rencontre, ScoreEquipeA, ScoreEquipeB);
 		}
 		return pronostique;
 	}
