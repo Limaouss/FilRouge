@@ -32,6 +32,7 @@ public class PronostiqueDaoImpl implements PronostiqueDao {
 		statement.setInt(4, ScoreEquipeB);
 
 		int isValid = statement.executeUpdate();
+		System.out.println("/////" + isValid);
 		if (isValid != 0) {
 			pronostique = new Pronostique(user, rencontre, ScoreEquipeA, ScoreEquipeB);
 		}
