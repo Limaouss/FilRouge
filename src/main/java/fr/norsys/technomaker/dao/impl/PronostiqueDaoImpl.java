@@ -24,7 +24,7 @@ public class PronostiqueDaoImpl implements PronostiqueDao {
 			throws SQLException {
 
 		Pronostique pronostique = new Pronostique();
-		String sql = "insert into PRONOSTIQUER values(?,?,?,?)";
+		String sql = "insert into PRONOSTIQUER(ID_USER,ID_RENCONTRE,SCOREEQUIPEA,SCOREEQUIPEB) values (?,?,?,?)";
 		PreparedStatement statement = this.connection.prepareStatement(sql);
 		statement.setInt(1, user.getIdUser());
 		statement.setInt(2, rencontre.getIdRencontre());
@@ -32,7 +32,6 @@ public class PronostiqueDaoImpl implements PronostiqueDao {
 		statement.setInt(4, ScoreEquipeB);
 
 		int isValid = statement.executeUpdate();
-		System.out.println("/////" + isValid);
 		if (isValid != 0) {
 			pronostique = new Pronostique(user, rencontre, ScoreEquipeA, ScoreEquipeB);
 		}

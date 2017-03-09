@@ -8,8 +8,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dbunit.DataSetUnit;
+import fr.norsys.technomaker.dao.impl.PronostiqueDaoImpl;
 import fr.norsys.technomaker.dao.impl.RecontreDaoImpl;
 import fr.norsys.technomaker.dao.impl.UserDaoImpl;
+import fr.norsys.technomaker.model.Pronostique;
 import fr.norsys.technomaker.model.User;
 
 public class PronostiqueInsertTest {
@@ -22,6 +24,7 @@ public class PronostiqueInsertTest {
 		DataSetUnit dataSource = new DataSetUnit();
 		this.userdao = new UserDaoImpl(dataSource.getConnection());
 		this.recontreDao = new RecontreDaoImpl(dataSource.getConnection());
+		this.pronostiqueDao = new PronostiqueDaoImpl(dataSource.getConnection());
 	}
 
 	@Test
@@ -30,6 +33,6 @@ public class PronostiqueInsertTest {
 		System.out.println("user" + user);
 		System.out.println("match" + this.recontreDao.getAllRencontre().get(0));
 		assertThat(this.pronostiqueDao.insertPronostique(user, this.recontreDao.getAllRencontre().get(0), 3, 2))
-				.isEqualTo(1);
+				.isEqualTo(new Pronostique(user, this.recontreDao.getAllRencontre().get(0), 3, 2));
 	}
 }
